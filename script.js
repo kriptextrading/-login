@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return; // stop further initialization on protected page
   }
   // populate user name on dashboard (if present)
-  const storedName = localStorage.getItem('krip_user_name') || 'ZOKUFA';
+  const storedName = localStorage.getItem('krip_user_name') || 'Likhanyile Zokufa';
   const nameEl = document.getElementById('userName');
   const mobileNameEl = document.getElementById('mobileUserName');
   if (nameEl) nameEl.textContent = storedName;
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (supplied === HARDCODED_PASSWORD) {
         localStorage.setItem('krip_logged_in', '1');
         const suppliedName = document.getElementById('username')?.value.trim();
-        localStorage.setItem('krip_user_name', suppliedName || 'ZOKUFA');
+        localStorage.setItem('krip_user_name', suppliedName || 'Likhanyile Zokufa');
         // small UX: clear the password field before navigation
         passwordInput.value = '';
         window.location.href = 'home.html';
@@ -306,3 +306,4 @@ function startOrderbookLive(container, data) {
 function formatNumber(v) {
   return Number(v).toLocaleString('en-ZA');
 }
+
