@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kriptex Trading — Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="logo">Kriptex Trading</div>
+      <div id="userBadge" class="user-badge" aria-live="polite">Welcome, <span id="userName">Likhanyile Zokufa</span></div>
+      <nav class="nav">
+        <a class="nav-item active" href="home.html">Dashboard</a>
+        <a id="navFund" class="nav-item" href="account.html">Fund Account</a>
+      </nav>
+      <div class="actions">
+        <button id="logoutBtn" class="btn small">Logout</button>
+      </div>
+
+      <!-- Mobile: hamburger toggle and sliding menu (hidden on desktop) -->
+      <button id="navToggle" class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+      </button>
+
+      <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+        <div class="mobile-user">Welcome, <strong id="mobileUserName">User</strong></div>
+        <a class="mobile-link" href="home.html">Dashboard</a>
+        <a class="mobile-link" href="account.html">Fund Account</a>
+        <button id="mobileLogout" class="mobile-link mobile-logout">Logout</button>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <!-- Grid: left, middle, right columns -->
+      <div class="col-left">
+        <div class="wallet-card panel">
+          <h3>Account Balance</h3>
+          <div class="value">R231.71</div>
+          <div class="subgrid">
+            <div>
+              <div class="label">Total Profit</div>
+              <div class="small-val">R34,231.71</div>
+            </div>
+            <div>
+              <div class="label">Bonus</div>
+              <div class="small-val">R650.00</div>
+            </div>
+          </div>
+          <section class="additional-info">
+          <div class="info-card">
+            <p>VERIFICATION NEEDED IMMEDIATELY TO RELEASE YOUR PROFIT - CLICK ON FUND ACCOUNT TO PROCEED</p>
+          </div>
+        </section>
+        </div>
+
+        <div class="chart-card panel">
+          <div class="chart-header">
+            <div class="market-select">
+              <div class="pair">BTC/ZAR</div>
+              <div class="small-muted">24h: +1.4%</div>
+            </div>
+            <div class="small-muted">Price chart</div>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="marketChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-middle">
+        <div class="panel orderboard">
+          <h4>Orderbook</h4>
+          <div id="orderbook" class="orderbook">
+            <!-- populated by script.js -->
+          </div>
+        </div>
+
+        <!-- Quick Order removed per request -->
+      </div>
+
+      <aside class="col-right">
+        <div class="panel">
+          <h4>Market Pairs</h4>
+          <div id="marketPairs" class="market-pairs">
+            BTC/ZAR<br>
+            ETH/ZAR<br>
+            USDT/ZAR<br>
+            XRP/ZAR
+          </div>
+        </div>
+      </aside>
+
+      <!-- Bottom full-width row: recent trades and markets list -->
+      <!-- Recent Trades removed as requested -->
+    </main>
+
+    <!-- Footer: Kriptex Trading (added) -->
+    <footer class="site-footer" aria-label="Site footer">
+      <div class="footer-inner">
+
+        <!-- Quick Links (placeholder text, not active links) -->
+        <div class="f-col links">
+          <h5>Quick Links</h5>
+          <ul>
+            <li>Dashboard</li>
+            <li>Fund Account</li>
+            <li>Wallet</li>
+            <li>Markets</li>
+            <li>Support</li>
+          </ul>
+        </div>
+
+        <!-- Legal & Risk Disclaimer -->
+        <div class="f-col legal">
+          <h5>Legal & Risk</h5>
+          <p class="disclaimer">Trading digital assets involves significant risk and may not be suitable for all investors. Prices are volatile and losses may exceed initial investments. Kriptex Trading provides tools for educational and demonstration purposes only.</p>
+        </div>
+
+        <!-- Contact & Meta Info -->
+        <div class="f-col contact">
+          <h5>Contact</h5>
+          <p>Support Email: <span class="accent">tradingkriptex91@gmail.com</span></p>
+          <p>Operating Hours: <span class="small-muted">24/7 Support</span></p>
+          <p class="meta">© 2025 Kriptex Trading. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Account details moved to a separate page; modal removed to simplify dashboard. -->
+
+  </div>
+
+  <!-- Chart.js (UMD build) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kriptex Trading — Account Details</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="logo">Kriptex Trading</div>
+      <nav class="nav">
+        <a class="nav-item" href="home.html">Dashboard</a>
+        <a class="nav-item active">Fund Account</a>
+      </nav>
+      <div class="actions">
+        <button id="logoutBtn" class="btn small">Logout</button>
+      </div>
+
+      <!-- Mobile hamburger + menu -->
+      <button id="navToggle" class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+      </button>
+
+      <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+        <div class="mobile-user">Welcome, <strong id="mobileUserName">User</strong></div>
+        <a class="mobile-link" href="home.html">Dashboard</a>
+        <a class="mobile-link" href="account.html">Fund Account</a>
+        <button id="mobileLogout" class="mobile-link mobile-logout">Logout</button>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <section class="wallets">
+        <div class="wallet-card">
+          <h3>Account Details</h3>
+          <div class="account-card static">
+            <div class="detail"><span class="label">Account Name</span><span>Company</span></div>
+            <div class="detail"><span class="label">Bank Name</span><span>Capitec</span></div>
+            <div class="detail"><span class="label">Account Number</span><span>2339026071</span></div>
+          </div>
+        </div>
+      </section>
+        <section class="additional-info">
+          <div class="info-card">
+            <h3>VERIFICATION NEEDED</h3>
+            <p>Make a payment of R850 to verify your account in order to release your Profit.</p>
+          </div>
+        </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

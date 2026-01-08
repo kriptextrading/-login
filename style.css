@@ -1,0 +1,194 @@
+:root{
+  --bg-1:#040612;
+  --bg-2:#071223;
+  --card:#0b1220;
+  --accent:#00f0ff;
+  --muted:#9aa7b2;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,var(--bg-1),var(--bg-2));color:#e6eef6}
+
+.brand,.logo{color:var(--accent);font-weight:700;letter-spacing:0.6px}
+.brand{position:fixed;top:20px;left:24px;font-size:18px}
+
+.page,.app{min-height:100vh;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;padding:12px 18px}
+
+/* Login / auth page specific layout (centers the card vertically & horizontally) */
+body.auth .page{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:24px}
+body.auth .brand{position:static;left:auto;top:auto;margin:0 0 18px 0;font-size:22px;text-align:center}
+body.auth .center{width:100%;max-width:420px;display:flex;justify-content:center;align-items:center}
+body.auth .card{padding:28px 22px;max-width:420px;width:100%}
+
+/* login input styling (username) */
+input[type=text]{width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit;font-size:15px;margin-top:10px;outline:none}
+input[type=text]::placeholder{color:var(--muted)}
+
+/* user badge in topbar */
+.user-badge{margin-left:auto;color:#bff8ff;font-weight:600;display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:8px;background:linear-gradient(90deg,rgba(0,240,255,0.02),transparent);border:1px solid rgba(0,240,255,0.03)}
+.user-badge #userName{color:var(--accent);font-weight:700;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.center{width:100%;max-width:420px}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-radius:12px;padding:32px 24px;box-shadow:0 8px 30px rgba(2,6,23,0.7);border:1px solid rgba(0,240,255,0.06);display:flex;flex-direction:column;gap:14px;transform:translateY(12px);opacity:0;animation:cardIn .6s cubic-bezier(.2,.9,.3,1) .12s forwards}
+.card-title{margin:0;color:#dff9ff;font-weight:600;font-size:18px;text-align:center}
+.hint{color:var(--muted);font-size:13px;text-align:center;margin:6px 0 0}
+input[type=password]{width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit;font-size:15px;outline:none;transition:box-shadow .18s,transform .12s}
+input[type=password]::placeholder{color:var(--muted)}
+input[type=password]:focus{box-shadow:0 0 18px rgba(0,240,255,0.08);border-color:var(--accent);transform:translateY(-2px)}
+.btn{margin-top:6px;padding:10px 14px;border-radius:10px;border:none;background:linear-gradient(90deg,var(--accent),#6ef7ff);color:#001018;font-weight:600;cursor:pointer;font-size:15px;box-shadow:0 6px 20px rgba(0,240,255,0.06);transition:transform .12s,box-shadow .12s}
+.btn.small{padding:8px 10px;font-size:13px}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--accent);}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,240,255,0.12)}
+.btn:active{transform:translateY(-1px)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+@keyframes cardIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+body{animation:fadeIn .5s ease both}
+
+/* Dashboard styles */
+.topbar{width:100%;max-width:1100px;margin:18px auto;padding:14px 18px;background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.005));border-radius:12px;display:flex;align-items:center;gap:18px;box-shadow:0 8px 30px rgba(2,6,23,0.6);border:1px solid rgba(0,240,255,0.04)}
+.topbar{position:relative}
+.topbar .logo{font-size:18px}
+.nav{display:flex;gap:12px;margin-left:12px}
+.nav-item{color:var(--muted);padding:6px 8px;border-radius:8px}
+.nav-item.active{color:var(--accent);background:rgba(0,240,255,0.03)}
+.actions{margin-left:auto}
+
+/* Hamburger button (hidden on desktop) */
+.hamburger{display:none;border:0;background:transparent;padding:8px;border-radius:8px;cursor:pointer}
+.hamburger .hamburger-box{display:inline-block;width:22px;height:16px;position:relative}
+.hamburger .hamburger-inner, .hamburger .hamburger-inner::before, .hamburger .hamburger-inner::after{display:block;background:var(--muted);height:2px;border-radius:2px;position:absolute;left:0;right:0}
+.hamburger .hamburger-inner{top:50%;transform:translateY(-50%)}
+.hamburger .hamburger-inner::before{content:'';top:-7px}
+.hamburger .hamburger-inner::after{content:'';top:7px}
+
+/* Mobile menu panel (hidden by default) */
+.mobile-menu{position:absolute;left:12px;right:12px;top:100%;margin-top:12px;padding:12px;border-radius:12px;background:linear-gradient(180deg,rgba(2,6,23,0.98),rgba(1,4,12,0.98));backdrop-filter:blur(6px);box-shadow:0 12px 30px rgba(2,6,23,0.6);border:1px solid rgba(0,240,255,0.04);display:flex;flex-direction:column;gap:10px;opacity:0;transform:translateY(-8px) scaleY(.98);transform-origin:top;pointer-events:none;transition:opacity .26s ease,transform .26s cubic-bezier(.2,.9,.3,1)}
+.mobile-menu.open{opacity:1;transform:translateY(0) scaleY(1);pointer-events:auto}
+.mobile-menu .mobile-link{display:block;padding:12px 14px;border-radius:8px;color:#e8fbff;text-decoration:none;background:transparent;text-align:left;font-weight:600}
+.mobile-menu .mobile-link:hover{background:rgba(0,240,255,0.03)}
+.mobile-menu .mobile-logout{background:linear-gradient(90deg,#ff7b89,#ff5777);color:#071018;border:0}
+
+/* Mobile & tablet breakpoint: hide normal nav, show hamburger and mobile panel */
+@media (max-width:768px){
+  .nav{display:none}
+  .hamburger{display:inline-flex}
+  .actions{margin-left:auto;gap:8px}
+  /* Place the user badge on its own line beneath the logo */
+  .topbar{flex-wrap:wrap}
+  .topbar > .logo{flex:0 0 auto}
+  .topbar > .user-badge{flex-basis:100%;order:2;margin-left:0;margin-top:8px;padding:8px 12px}
+}
+
+/* Prevent overflow and ensure elements wrap appropriately */
+@media (max-width:420px){
+  .mobile-menu{left:8px;right:8px;padding:10px}
+  .mobile-menu .mobile-link{padding:10px}
+}
+
+.dashboard{width:100%;max-width:1400px;margin:12px auto;display:grid;gap:18px;align-items:start;grid-auto-rows:minmax(min-content, auto)}
+/* Desktop: 3 columns (left: wallet+chart, middle: orderbook+quick-order, right: market pairs) */
+.dashboard{grid-template-columns:1.4fr 1fr 320px}
+.wallets{display:flex;flex-direction:column;gap:12px}
+.wallet-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:14px;border-radius:10px}
+.wallet-card h3{margin:0;font-size:14px;color:var(--muted)}
+.wallet-card .value{font-size:28px;margin-top:8px;color:#eaffff;font-weight:700}
+.subgrid{display:flex;gap:18px;margin-top:12px}
+.label{font-size:12px;color:var(--muted)}
+.small-val{font-size:14px;color:#cfffff;font-weight:600}
+
+.chart-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:12px 8px 12px 12px;border-radius:12px;display:flex;flex-direction:column;min-height:520px;flex:1;overflow:hidden}
+.chart-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.chart-wrap{position:relative;width:100%;height:100%;padding:0;margin:0;flex:1;min-height:320px}
+/* ensure canvas fills the container and is responsive and uses box-sizing */
+.chart-wrap canvas{width:100% !important;height:100% !important;display:block;box-sizing:border-box;opacity:0;transform:translateY(8px);animation:canvasIn .9s cubic-bezier(.2,.9,.3,1) .12s forwards}
+
+@keyframes canvasIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+.account-details{background:transparent}
+.account-card{background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.005));padding:14px;border-radius:12px}
+.account-card.static{display:flex;flex-direction:column;gap:10px}
+.account-card .detail{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.02)}
+.account-card .detail .label{font-size:12px;color:var(--muted)}
+.account-card .detail span{font-size:14px;color:#eaffff;font-weight:600}
+
+/* Collapsible account details animation */
+.account-details{overflow:hidden;transition:max-height .36s cubic-bezier(.2,.9,.3,1),opacity .28s}
+.account-details.collapsed{max-height:0;opacity:0;padding:0 0}
+.account-details:not(.collapsed){max-height:400px;opacity:1;padding:12px 0}
+
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:linear-gradient(0deg,rgba(2,6,23,0.6),rgba(2,6,23,0.6));z-index:60}
+.modal[aria-hidden="false"]{display:flex}
+.modal-content{background:#071024;border-radius:10px;padding:18px;width:90%;max-width:520px;border:1px solid rgba(0,240,255,0.06)}
+.modal-grid{display:grid;gap:8px}
+.modal-actions{display:flex;justify-content:flex-end;margin-top:12px}
+.muted{color:var(--muted);font-size:13px}
+
+/* Tablet: collapse to 2 columns; Mobile: stack to 1 column */
+@media (max-width:1100px){
+  .dashboard{grid-template-columns:1fr 360px}
+}
+
+@media (max-width:900px){
+  .dashboard{grid-template-columns:1fr}
+}
+
+@media (max-width:480px){
+  .topbar{padding:10px}
+  .dashboard{height:auto}
+}
+
+/* New panels: orderbook and recent trades */
+.panel{background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.005));padding:12px;border-radius:10px}
+.split{display:flex;gap:12px}
+.orderbook{height:auto;overflow:visible;min-height:520px}
+/* Column helpers to control internal stacking and alignment
+  Each column stacks its panels vertically; panels expand naturally so the
+  whole page scrolls instead of inner cards. */
+.col-left{display:flex;flex-direction:column;gap:12px}
+.col-middle{display:flex;flex-direction:column;gap:12px}
+.col-right{display:flex;flex-direction:column;gap:12px}
+
+/* Full width row below grid (recent trades) */
+.full-row{grid-column:1 / -1;display:flex;gap:18px;margin-top:12px}
+.market-select{display:flex;gap:8px;align-items:center}
+.market-select .pair{background:rgba(0,240,255,0.04);padding:6px 10px;border-radius:8px;color:var(--accent);font-weight:600}
+.order-actions{display:flex;gap:8px}
+.small-muted{font-size:12px;color:var(--muted)}
+
+/* Orderbook live update visuals */
+.orderbook .ob-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px 0;align-items:center;font-size:13px}
+.orderbook .ob-cell{transition:transform .12s, color .18s}
+.orderbook .ob-price{font-variant-numeric:tabular-nums}
+.flash-up{color:#7bffea;animation:flashUp .45s ease}
+.flash-down{color:#ff7b89;animation:flashDown .45s ease}
+@keyframes flashUp{0%{transform:scale(1)}30%{transform:scale(1.03)}100%{transform:scale(1)}}
+@keyframes flashDown{0%{transform:scale(1)}30%{transform:scale(0.98)}100%{transform:scale(1)}}
+
+/* Footer styles
+   - Uses CSS Grid to create 4 columns on desktop, 2 columns on tablet, and 1 column on mobile.
+   - Footer is not fixed; it sits below page content and scrolls naturally with the page.
+*/
+.site-footer{background:linear-gradient(180deg,rgba(2,6,23,0.95),rgba(1,4,12,0.98));border-top:1px solid rgba(0,240,255,0.06);color:#cfeff3;padding:36px 18px;margin-top:28px}
+.site-footer .footer-inner{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;gap:20px;align-items:start;flex-wrap:wrap;padding:0 18px}
+.site-footer .footer-inner .f-col{flex:1 1 0;min-width:220px;padding:0 8px}
+.site-footer .f-col h5{margin:0 0 10px;color:var(--accent);font-size:15px}
+.site-footer .brand .logo{font-size:18px;color:var(--accent);font-weight:700;margin-bottom:8px}
+.site-footer .f-desc{color:#bfeff5;font-size:13px;line-height:1.45;margin:0}
+.site-footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.site-footer ul li{color:var(--muted);font-size:14px}
+.site-footer .disclaimer{font-size:13px;color:#bfcfd3;line-height:1.45}
+.site-footer .contact p{margin:6px 0;color:#dff7fb}
+.site-footer .accent{color:var(--accent);font-weight:600}
+.site-footer .meta{font-size:13px;color:var(--muted);margin-top:12px}
+
+/* Responsive footer grid */
+@media (max-width:900px){
+  .site-footer .footer-inner{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:480px){
+  .site-footer .footer-inner{grid-template-columns:1fr;gap:12px}
+  .site-footer{padding:24px 12px}
+}
+
+/* Ensure footer never overlaps content and scrolls with page: no position fixed/sticky used. */
